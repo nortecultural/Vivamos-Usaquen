@@ -1,167 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norte Cultural-Ideas que transfroman</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Norte Cultural - Ideas que transforman</title>
 
-    <!-- Fuente moderna y estilos integrados -->
-    <style>
-        /* Fuente moderna */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ece9e6, #ffffff);
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      margin: 0;
+      color: #333;
+    }
 
-        /* Header */
-        header {
-            text-align: center;
-            padding: 60px 20px 30px;
-            background: linear-gradient(120deg, #0077ff, #00c2ff);
-            color: white;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
+    /* Header */
+    header {
+      text-align: center;
+      padding: 50px 20px 40px;
+      background: linear-gradient(120deg, #0077ff, #00c2ff);
+      color: white;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 8px;
+    }
 
-        header p {
-            font-weight: 300;
-            font-size: 1.1em;
-        }
+    header p {
+      font-weight: 300;
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
 
-        /* Galería */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            padding: 50px;
-            max-width: 1200px;
-            margin: auto;
-        }
+    /* Canva embed integrado */
+    .canva-embed-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #ffffff 0%, #eaf7ff 100%);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
 
-        /* Tarjetas */
-        .card {
-            text-decoration: none;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 15px;
-        }
+    .canva-embed-wrapper:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
 
-        .card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
+    .canva-embed {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 56.25%; /* relación 16:9 */
+    }
 
-        .img-container {
-            width: 100%;
-            height: 160px;
-            background: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .canva-embed iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border: none;
+    }
 
-        .img-container img {
-            max-width: 70%;
-            max-height: 70%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
+    /* Galería */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding: 50px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        .card:hover img {
-            transform: scale(1.1);
-        }
+    /* Tarjetas */
+    .card {
+      text-decoration: none;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 15px;
+    }
 
-        /* Texto en las tarjetas */
-        .card h2 {
-            margin: 15px 0 5px;
-            color: #0077ff;
-            font-size: 1.3em;
-        }
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
 
-        .card p {
-            color: #666;
-            font-size: 0.95em;
-            margin: 0 15px;
-            text-align: center;
-        }
+    .img-container {
+      width: 100%;
+      height: 160px;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #888;
-            font-size: 0.9em;
-            border-top: 1px solid #eee;
-            background: #fafafa;
-        }
-    </style>
+    .img-container img {
+      max-width: 70%;
+      max-height: 70%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .card h2 {
+      margin: 15px 0 5px;
+      color: #0077ff;
+      font-size: 1.3em;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 0.95em;
+      margin: 0 15px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #888;
+      font-size: 0.9em;
+      border-top: 1px solid #eee;
+      background: #fafafa;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div style="position: relative; width: 100%; height: 0; padding-top: 25.0000%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"    src="https://www.canva.com/design/DAG4lR64LQI/UqGI7QLPE_rbnpcBdLwrfA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">  </iframe></div><a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAG4lR64LQI&#x2F;UqGI7QLPE_rbnpcBdLwrfA&#x2F;view?utm_content=DAG4lR64LQI&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener"></a> 
+  <header>
+    <h1>Norte Cultural</h1>
+    <p>Ideas que transforman</p>
 
-    <main class="gallery">
-        <a href="https://www.instagram.com/nortecultural_usaquen/" target="_blank" class="card">
-            <div class="img-container">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAe30Orn78rnEdbEfYn0hIcVXa6ou1SLyp1g&s" alt="Norte Cultural">
-            </div>
-            <h2>Norte Cultural</h2>
-            <p>Aquí un slogan</p>
-        </a>
+    <div class="canva-embed-wrapper">
+      <div class="canva-embed">
+        <iframe loading="lazy" 
+          src="https://www.canva.com/design/DAG4lR64LQI/UqGI7QLPE_rbnpcBdLwrfA/view?embed" 
+          allowfullscreen="allowfullscreen">
+        </iframe>
+      </div>
+    </div>
+  </header>
 
-        <a href="https://www.openai.com" target="_blank" class="card">
-            <div class="img-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/OpenAI_Logo.svg" alt="OpenAI">
-            </div>
-            <h2>OpenAI</h2>
-            <p>Inteligencia artificial avanzada</p>
-        </a>
+  <main class="gallery">
+    <a href="https://www.instagram.com/nortecultural_usaquen/" target="_blank" class="card">
+      <div class="img-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAe30Orn78rnEdbEfYn0hIcVXa6ou1SLyp1g&s" alt="Norte Cultural">
+      </div>
+      <h2>Norte Cultural</h2>
+      <p>Aquí un slogan</p>
+    </a>
 
-        <a href="https://www.youtube.com" target="_blank" class="card">
-            <div class="img-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
-            </div>
-            <h2>YouTube</h2>
-            <p>Videos, música y creatividad</p>
-        </a>
+    <a href="https://www.openai.com" target="_blank" class="card">
+      <div class="img-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/OpenAI_Logo.svg" alt="OpenAI">
+      </div>
+      <h2>OpenAI</h2>
+      <p>Inteligencia artificial avanzada</p>
+    </a>
 
-        <a href="https://www.github.com" target="_blank" class="card">
-            <div class="img-container">
-                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
-            </div>
-            <h2>GitHub</h2>
-            <p>El hogar del código abierto</p>
-        </a>
+    <a href="https://www.youtube.com" target="_blank" class="card">
+      <div class="img-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+      </div>
+      <h2>YouTube</h2>
+      <p>Videos, música y creatividad</p>
+    </a>
 
-        <a href="https://www.wikipedia.org" target="_blank" class="card">
-            <div class="img-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia">
-            </div>
-            <h2>Wikipedia</h2>
-            <p>El conocimiento libre del mundo</p>
-        </a>
-    </main>
+    <a href="https://www.github.com" target="_blank" class="card">
+      <div class="img-container">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+      </div>
+      <h2>GitHub</h2>
+      <p>El hogar del código abierto</p>
+    </a>
 
-    <footer>
-        <p>Organizaciones sin ánimo de lucro para ti</p>
-    </footer>
+    <a href="https://www.wikipedia.org" target="_blank" class="card">
+      <div class="img-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia">
+      </div>
+      <h2>Wikipedia</h2>
+      <p>El conocimiento libre del mundo</p>
+    </a>
+  </main>
+
+  <footer>
+    <p>Organizaciones sin ánimo de lucro para ti</p>
+  </footer>
 </body>
 </html>
-
