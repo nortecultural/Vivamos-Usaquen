@@ -26,24 +26,18 @@
         border-bottom-right-radius: 30px;
         box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
     }
-    @media (max-width: 768px) {
-    header {
-        aspect-ratio: 16 / 3; /* Más compacto en móviles */
-    }
-    }
 
 
     /* Iframe ajustado a cubrir sin dejar bordes */
     header iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100vw;
-      height: 100vh;
-      transform: translate(-50%, -50%);
-      border: none;
-      object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
     }
+
 
 
     /* Galería */
@@ -116,11 +110,6 @@
       background: #fafafa;
     }
 
-    @media (max-width: 768px) {
-      header {
-        height: 80vh;
-      }
-    }
   </style>
 </head>
 
