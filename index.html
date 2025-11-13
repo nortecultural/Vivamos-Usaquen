@@ -18,14 +18,15 @@
 
     /* Header que usa el Canva como fondo completo */
     header {
-      position: relative;
-      width: 100%;
-      height: 400px; /* ahora ocupa toda la altura de la pantalla */
-      overflow: hidden;
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-    }
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 4;  /* ajusta si tu diseño no es 16:9 */
+  overflow: hidden;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+}
+
 
     /* Iframe ajustado a cubrir sin dejar bordes */
     header iframe {
@@ -173,4 +174,5 @@
   </footer>
 </body>
 </html>
+
 
