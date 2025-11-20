@@ -53,6 +53,9 @@
       border-radius: 0 0 20px 20px;
       position: relative;
       z-index: 10;
+      overflow-x: auto;         /* permite scroll horizontal */
+      white-space: nowrap;      /* evita salto de línea */
+      scrollbar-width: none;    /* oculta barra en Firefox */
     }
 
     nav ul {
@@ -181,12 +184,12 @@
     }
     @media (max-width: 600px) {
       nav {
-        justify-content: flex-start;  /* se alinea a la izquierda y hace scroll */
+        justify-content: flex-start;
         padding-left: 20px;
       }
 
       .gallery {
-        grid-template-columns: 1fr;   /* una sola columna */
+        grid-template-columns: 1fr;
         max-width: 400px;
       }
     }
