@@ -184,6 +184,29 @@
       background: #fafafa;
       margin-top: 60px;
     }
+    /* CAMBIO: Contenedor que evita que el menú se desborde */
+    .menu-container {
+      width: 100%;
+      overflow-x: auto;           /* permite scroll si es necesario */
+      background: white;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+      display: flex;
+      justify-content: center;
+      scrollbar-width: none;
+    }
+
+    .menu-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* CAMBIO: Ajuste al nav para que respete límites del contenedor */
+    .menu-container nav {
+      width: max-content;         /* el menú mide lo que necesite */
+      padding: 12px 25px;
+    }
+
     @media (max-width: 600px) {
       nav {
         justify-content: flex-start;
@@ -207,16 +230,17 @@
       allowfullscreen="allowfullscreen">
     </iframe>
   </header>
-
-  <!-- MENÚ debajo del Canva -->
-  <nav>
-    <ul>
-      <li><a onclick="showSection('Comunicaciones')">Comunicaciones</a></li>
-      <li><a onclick="showSection('Sostenibilidad')">Sostenibilidad</a></li>
-      <li><a onclick="showSection('Formacion')">Formación</a></li>
-      <li><a onclick="showSection('Circulacion')">Circulación</a></li>
-    </ul>
-  </nav>
+<!-- MENÚ debajo del Canva -->
+  <div class="menu-container"> <!-- CAMBIO: contenedor agregado -->
+    <nav>
+      <ul>
+        <li><a onclick="showSection('Comunicaciones')">Comunicaciones</a></li>
+        <li><a onclick="showSection('Sostenibilidad')">Sostenibilidad</a></li>
+        <li><a onclick="showSection('Formacion')">Formación</a></li>
+        <li><a onclick="showSection('Circulacion')">Circulación</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <!-- SECCIONES -->
 
