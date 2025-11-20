@@ -16,41 +16,98 @@
       overflow-x: hidden;
     }
 
-    /* Header que usa el Canva como fondo completo */
-    header {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 16 / 4;  /* ajusta si tu diseño no es 16:9 */
-        overflow: hidden;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    /* ============================
+       HEADER Canva
+    ============================ */
+    .hero {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 4;
+      overflow: hidden;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
     }
 
-
-    /* Iframe ajustado a cubrir sin dejar bordes */
-    header iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
+    .hero iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
+    /* ============================
+       MENÚ debajo del Canva
+    ============================ */
+    nav {
+      width: 100%;
+      background: white;
+      padding: 12px 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+      margin-bottom: 25px;
+      border-radius: 0 0 20px 20px;
+      position: relative;
+      z-index: 10;
+    }
 
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      padding: 0;
+      margin: 0;
+    }
 
-    /* Galería */
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 1.05em;
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+
+    nav ul li a:hover {
+      color: #0077ff;
+    }
+
+    /* ============================
+       SECCIONES
+    ============================ */
+    section {
+      display: none;
+      width: 100%;
+      max-width: 100%;
+      margin: auto;
+      padding: 40px 25px;
+      text-align: center;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    /* ============================
+       GALERÍA (Sección Comunicaciones)
+    ============================ */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      padding: 60px 50px;
-      max-width: 1200px;
-      margin: auto;
+      gap: 30px;
+      padding: 40px 20px;
+      width: 100%;
+      max-width: 1400px; /* opcional */
+      margin: auto; /* centra el grid completo */
     }
 
+
     .card {
+      width:300px;
       text-decoration: none;
       background: white;
       border-radius: 20px;
@@ -91,13 +148,24 @@
     .card h2 {
       margin: 15px 0 5px;
       color: #0077ff;
-      font-size: 1.3em;
+      font-size: 1.2em;
     }
 
     .card p {
       color: #666;
-      font-size: 0.95em;
+      font-size: 0.8em;
       margin: 0 15px;
+      text-align: center;
+    }
+
+    /* ============================
+       CONTENIDO GENERAL
+    ============================ */
+    .content {
+      max-width: 900px;
+      padding: 40px;
+      margin: auto;
+      font-size: 1.1em;
       text-align: center;
     }
 
@@ -108,65 +176,109 @@
       font-size: 0.9em;
       border-top: 1px solid #eee;
       background: #fafafa;
+      margin-top: 60px;
     }
-
   </style>
 </head>
 
 <body>
-  <header>
+
+  <!-- HEADER -->
+  <header class="hero">
     <iframe loading="lazy"
       src="https://www.canva.com/design/DAG4lR64LQI/UqGI7QLPE_rbnpcBdLwrfA/view?embed"
       allowfullscreen="allowfullscreen">
     </iframe>
   </header>
 
-  <main class="gallery">
-    <a href="https://www.instagram.com/nortecultural_usaquen/" target="_blank" class="card">
-      <div class="img-container">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAe30Orn78rnEdbEfYn0hIcVXa6ou1SLyp1g&s" alt="Norte Cultural">
-      </div>
-      <h2>Norte Cultural</h2>
-      <p>Aquí un slogan</p>
-    </a>
+  <!-- MENÚ debajo del Canva -->
+  <nav>
+    <ul>
+      <li><a onclick="showSection('Comunicaciones')">Comunicaciones</a></li>
+      <li><a onclick="showSection('Sostenibilidad')">Sostenibilidad</a></li>
+      <li><a onclick="showSection('Formacion')">Formación</a></li>
+      <li><a onclick="showSection('Circulacion')">Circulación</a></li>
+    </ul>
+  </nav>
 
-    <a href="https://www.openai.com" target="_blank" class="card">
-      <div class="img-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/OpenAI_Logo.svg" alt="OpenAI">
-      </div>
-      <h2>OpenAI</h2>
-      <p>Inteligencia artificial avanzada</p>
-    </a>
+  <!-- SECCIONES -->
 
-    <a href="https://www.youtube.com" target="_blank" class="card">
-      <div class="img-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
-      </div>
-      <h2>YouTube</h2>
-      <p>Videos, música y creatividad</p>
-    </a>
+  <!-- Comunicaciones -->
+  <section id="Comunicaciones" class="active">
 
-    <a href="https://www.github.com" target="_blank" class="card">
-      <div class="img-container">
-        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
-      </div>
-      <h2>GitHub</h2>
-      <p>El hogar del código abierto</p>
-    </a>
+    <main class="gallery">
 
-    <a href="https://www.wikipedia.org" target="_blank" class="card">
-      <div class="img-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia">
-      </div>
-      <h2>Wikipedia</h2>
-      <p>El conocimiento libre del mundo</p>
-    </a>
-  </main>
+      <a href="https://www.instagram.com/nortecultural_usaquen/" target="_blank" class="card">
+        <div class="img-container">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAe30Orn78rnEdbEfYn0hIcVXa6ou1SLyp1g&s" alt="Norte Cultural">
+        </div>
+        <h2>Norte Cultural</h2>
+        <p>Aquí un slogan</p>
+      </a>
+
+      <a href="htpp://www.viveusaquen.com" target="_blank" class="card">
+        <div class="img-container">
+          <img src="https://scontent.fbog3-1.fna.fbcdn.net/v/t39.30808-6/306000688_467297378771524_6014865955170441640_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Ou9ZlwREDV8Q7kNvwF_J63m&_nc_oc=Adm5K_EZTg1TVRCvOzEYom9xiZBvpbE_xsQ3mXRqZzp1WAaiN_N-G46lKdglHN7Wazc&_nc_zt=23&_nc_ht=scontent.fbog3-1.fna&_nc_gid=a9j9tzy1oLawubFcj6bf4w&oh=00_AfhH-BknDE55-lHDZdJ2rh8iLtmEeb5qwXGxx3T8o-Aa2Q&oe=69256415" alt="Asojuntas">
+        </div>
+        <h2>Asojuntas Usaquén</h2>
+        <p>Mejor historia, mas cultura por la salud mental de los Usaquenes.</p>
+      </a>
+
+      <a href="https://www.instagram.com/eljosecuenta/" target="_blank" class="card">
+        <div class="img-container">
+          <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/6809b790083b52b994cf2defba21fd5c~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=c5906cf9&x-expires=1763845200&x-signature=b4mDG%2B5NGu4GGPnGWWtho%2BZvgss%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=maliva" alt="Jose Buitrago Cardona ">
+        </div>
+        <h2>Jose Buitrago Cardona</h2>
+        <p></p>
+      </a>
+
+      <a href="https://www.instagram.com/revistazonagastronomica/" target="_blank" class="card">
+        <div class="img-container">
+          <img src="https://scontent.fbog3-1.fna.fbcdn.net/v/t39.30808-6/513993598_1236376558500000_4389635565680559458_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=NJQvABCeKHcQ7kNvwEZMNRT&_nc_oc=AdnhtMPzyN2Enp-aZwikNyrbWMsKOIWe7c3uxf605eMirqxjC31NtWLTg1tTPhZ34Qk&_nc_zt=23&_nc_ht=scontent.fbog3-1.fna&_nc_gid=GDPs-9CvLdfKZyr_Tdocnw&oh=00_Afi1A5VUmaNNMY1lnKJTDrzx3I9q2x7J5h8JM5g1aCgMsA&oe=69257343" alt="Revista Zona Gastronómica Usaquén ">
+        </div>
+        <h2>Revista Zona Gastronómica</h2>
+        <p>Revista Zona Gastronómica Usaquén. Algo bueno se está cocinando! </p>
+      </a>
+
+    </main>
+  </section>
+
+  <!-- Sostenibilidad -->
+  <section id="Sostenibilidad">
+    <div class="content">
+      <h1>Sostenibilidad</h1>
+      <p>Aun no hay organizaciones de sostenibilidad</p>
+    </div>
+  </section>
+
+  <!-- Formación -->
+  <section id="Formacion">
+    <div class="content">
+      <h1>Sobre la Formación</h1>
+      <p>Aun no hay organizaciones de formación</p>
+    </div>
+  </section>
+
+  <!-- Circulacion -->
+  <section id="Circulacion">
+    <div class="content">
+      <h1>Circulación</h1>
+      <p>Aun no hay organizaciones de circulacion</p>
+    </div>
+  </section>
 
   <footer>
-    <p>Organizaciones sin ánimo de lucro para ti (esta página fue subida gratuitamente gracias a GitHub)</p>
+    <p>Formaciones sin ánimo de lucro para ti (esta página fue subida gratuitamente gracias a GitHub)</p>
   </footer>
+
+  <!-- SCRIPT para navegar -->
+  <script>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+
 </body>
 </html>
-
-
