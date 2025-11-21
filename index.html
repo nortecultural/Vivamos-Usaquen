@@ -13,7 +13,7 @@
       background: linear-gradient(135deg, #ece9e6, #ffffff);
       margin: 0;
       color: #333;
-      overflow-x: hidden !important;
+      overflow-x: hidden;
     }
 
     .hero {
@@ -37,21 +37,21 @@
 
 
     nav {
-      width: max-content;
-      background: rgb(255, 255, 255);
+      width: 100%;
+      background: white;
       padding: 12px 25px;
       display: flex;
-      justify-content: center;
       align-items: center;
       box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
       margin-bottom: 10px;
       border-radius: 0 0 20px 20px;
       position: relative;
       z-index: 10;
-      overflow: visible;
-      margin: auto;
+
+      overflow-x: auto;      /* <-- Scroll aquí */
       white-space: nowrap;
-      min-width: fit-content;
+      scrollbar-width: none;
+      justify-content: flex-start;  /* <-- IMPORTANTE */
     }
 
 
@@ -61,7 +61,7 @@
       gap: 30px;
       padding: 0;
       margin: 0;
-      width: max-content;
+      padding: 0 25px 0 25px; 
     }
 
     nav ul li a {
@@ -157,6 +157,7 @@
     }
 
 
+    
     .content {
       max-width: 900px;
       padding: 40px;
@@ -176,13 +177,14 @@
     }
     .menu-container {
       width: 100%;
-      position: relative;
+      overflow-x: visible;  /* <-- Cambiado */
       background: white;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
       box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
-      overflow-x: auto;
-      white-space: nowrap;
+      display: flex;
+      justify-content: center;
+      scrollbar-width: none;
     }
 
 
@@ -190,8 +192,25 @@
       display: none;
     }
 
+    .menu-container nav {
+      width: max-content;
+      padding: 12px 25px;
+    }
 
+    @media (max-width: 400px) {
+      nav {
+        justify-content: center;
+        padding-left: 20px;
+      }
 
+      .gallery {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
     .titulo-agua {
       color: #83cbc4;
       margin-top: -40px;
@@ -205,14 +224,6 @@
       border-bottom: 2px solid #0077ff;
       padding-bottom: 4px;
     }
-
-    
-
-
-    @keyframes blink {
-      0%, 100% { transform: translateY(-50%) translateX(0); opacity: 0.3; }
-      50% {transform: translateY(-50%) translateX(8px);  opacity: 1;}
-    }
     .scroll-hint {
       color: #4d848f;
       display: none;
@@ -223,28 +234,21 @@
       opacity: 0.7;
       animation: blink 1.2s infinite;
       transform: translateY(0);
-      z-index: 99;
+      pointer-events: none;
+      z-index: 20;
     }
+
+
+    @keyframes blink {
+      0%, 100% { transform: translateY(-50%) translateX(0); opacity: 0.3; }
+      50% {transform: translateY(-50%) translateX(8px);  opacity: 1;}
+    }
+
     @media (max-width: 600px) {
-      nav {
-        justify-content: flex-start!important;
-        padding-left: 0!important;
-      }
-      nav ul {
-        gap: 18px;
-      }
-      .gallery {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
       .scroll-hint {
         display: block;
       }
     }
-    
 
 
   </style>
@@ -377,10 +381,10 @@
       if (activeLink) activeLink.classList.add("active-link");
     }
 
-    const nav = document.querySelector("nav");
+    const menuCont = document.querySelector(".menu-container");
     const hint = document.querySelector(".scroll-hint");
 
-    nav.addEventListener("scroll", () => {
+    menuCont.addEventListener("scroll", () => {
       hint.style.display = "none";
     });
   </script>
