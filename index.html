@@ -211,6 +211,38 @@
       font-size: 30px;
 
     }
+    nav ul li a.active-link {
+      color: #0077ff;
+      font-weight: 700;
+      border-bottom: 2px solid #0077ff;
+      padding-bottom: 4px;
+    }
+    .scroll-hint {
+      color: #4d848f;
+      display: none;
+      position: absolute;
+      right: 10px;
+      top: 117px;
+      font-size: 2em;
+      opacity: 0.7;
+      animation: blink 1.2s infinite;
+      transform: translateY(0);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      .scroll-hint {
+        display: block;
+      }
+    }
+
 
   </style>
 </head>
@@ -233,7 +265,9 @@
         <li><a onclick="showSection('Circulacion')">Circulación</a></li>
       </ul>
     </nav>
+    <span class="scroll-hint">></span>
   </div>
+
 
   <!-- SECCIONES -->
 
@@ -325,8 +359,22 @@
       document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
       document.getElementById(id).classList.add("active");
       window.scrollTo({ top: 0, behavior: "smooth" });
+      document.querySelectorAll("nav ul li a").forEach(a => a.classList.remove("active-link"));
+
+      const activeLink = [...document.querySelectorAll("nav ul li a")]
+        .find(a => a.getAttribute("onclick").includes(id));
+
+      if (activeLink) activeLink.classList.add("active-link");
     }
+
+    const menuCont = document.querySelector(".menu-container");
+    const hint = document.querySelector(".scroll-hint");
+
+    menuCont.addEventListener("scroll", () => {
+      hint.style.display = "none";
+    });
   </script>
+
 
 </body>
 </html>
